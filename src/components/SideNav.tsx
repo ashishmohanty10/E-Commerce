@@ -11,15 +11,20 @@ const siteroutes = [
     label: "Products",
   },
   {
-    id: 1,
+    id: 2,
     href: "/phonecases",
     label: "Phone Cases",
   },
 
   {
-    id: 1,
+    id: 3,
     href: "/accessories",
     label: "Accessories",
+  },
+  {
+    id: 4,
+    href: "/watch",
+    label: "Watches",
   },
 ];
 
@@ -33,7 +38,7 @@ const SideNav = () => {
             href={siteroutes.href}
             key={siteroutes.id}
             className={cn(
-              `text-zinc-400 font-medium ${
+              `text-zinc-400 font-medium hover:text-zinc-50 ${
                 pathname === siteroutes.href ? "text-zinc-50" : ""
               }`
             )}

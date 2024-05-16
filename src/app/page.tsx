@@ -4,7 +4,7 @@ import { HiArrowSmRight } from "react-icons/hi";
 
 export default function Home() {
   return (
-    <main className="text-center pt-32 px-5">
+    <main className="text-center py-56 px-5">
       <h1 className="text-4xl md:text-5xl font-bold mb-10">
         Welcome to My Shop
       </h1>
