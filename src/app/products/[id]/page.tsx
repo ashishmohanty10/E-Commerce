@@ -34,7 +34,7 @@ export default async function SinglePhoneCasePage({
           {product?.category}
         </p>
         <p className="text-xl font-bold mb-2 ">
-          {product.brand} {product.title}
+          {product.brand} {product?.title}
         </p>
 
         <p className="font-medium text-slate-300 mb-5">
