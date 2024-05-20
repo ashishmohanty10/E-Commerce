@@ -10,14 +10,14 @@ const getData = async () => {
 };
 
 export default async function Productspage() {
-  const products = await getData();
+  const phone = await getData();
   return (
     <div className="">
       <h1 className="text-4xl md:text-5xl font-bold mb-5 text-center">
-        This is the Products Page
+        This is the Phones Page
       </h1>
 
-      <ProductsList products={products} />
+      <ProductsList phones={phone} />
     </div>
   );
 }

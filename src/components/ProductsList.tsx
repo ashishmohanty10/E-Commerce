@@ -16,13 +16,13 @@ interface ProductsProps {
 }
 
 interface Props {
-  products: ProductsProps[];
+  phones: ProductsProps[];
 }
 
-const ProductsList = ({ products }: Props) => {
+const ProductsList = ({ phones }: Props) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 py-10">
-      {products.map((items) => {
+      {phones.map((items) => {
         return (
           <div key={items._id}>
             <div className="border-slate-500  rounded-md overflow-hidden hover:border hover:border-slate-50 duration-300 px-2">
