@@ -6,5 +6,14 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/products"],
+  matcher: [
+    "/products",
+    "/products/[id]",
+    "/accessories",
+    "/accessories/[id]",
+    "/phonecases",
+    "/phonecases/[id]",
+    "/watch",
+    "/watch/[id]",
+  ],
 };
