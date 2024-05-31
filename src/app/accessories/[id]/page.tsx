@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface SingleAccessoryProp {
   params: {
@@ -10,6 +11,12 @@ interface SingleAccessoryProp {
 export default async function SingleAccessoryPage({
   params,
 }: SingleAccessoryProp) {
+  const { isAuthenticated } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
   const res = await fetch(
     `https://jsonserver.reactbd.com/accessories/${params.id}`
   );

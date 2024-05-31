@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface SingleWatchProp {
   params: {
@@ -8,6 +9,12 @@ interface SingleWatchProp {
 }
 
 export default async function SingleWatchPage({ params }: SingleWatchProp) {
+  const { isAuthenticated } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
   const res = await fetch(`https://jsonserver.reactbd.com/watch/${params.id}`);
 
   if (!res?.ok) {

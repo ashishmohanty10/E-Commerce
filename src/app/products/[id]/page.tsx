@@ -1,5 +1,6 @@
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 type SingleProductProps = {
   params: {
@@ -10,6 +11,12 @@ type SingleProductProps = {
 export default async function SinglePhoneCasePage({
   params,
 }: SingleProductProps) {
+  const { isAuthenticated } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
   const res = await fetch(`https://jsonserver.reactbd.com/phone/${params.id}`);
 
   if (!res?.ok) {

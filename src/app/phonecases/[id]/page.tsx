@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface SinglePhoneCaseProps {
   params: {
@@ -10,6 +11,12 @@ interface SinglePhoneCaseProps {
 export default async function SinglePhoneCase({
   params,
 }: SinglePhoneCaseProps) {
+  const { isAuthenticated } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
   const res = await fetch(
     `https://jsonserver.reactbd.com/phonecase/${params.id}`
   );
