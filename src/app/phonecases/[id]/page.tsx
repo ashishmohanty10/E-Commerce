@@ -54,6 +54,10 @@ export default async function SinglePhoneCase({
           Price:{" "}
           <span className="text-green-400">${singlePhoneCase.price}</span>
         </p>
+
+        <button className="mt-10 px-4 py-2 bg-white text-black text-xs font-semibold rounded-md hover:bg-slate-950 hover:border hover:text-white hover:border-slate-50 duration-300">
+          Add to Cart
+        </button>
       </div>
     </div>
   );

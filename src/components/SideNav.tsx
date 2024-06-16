@@ -1,10 +1,18 @@
 "use client";
 import { cn } from "@/utils/cn";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import {
+  LogoutLink,
+  useKindeBrowserClient,
+} from "@kinde-oss/kinde-auth-nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import {
+  HiArrowSmRight,
+  HiShoppingCart,
+  HiOutlineXCircle,
+} from "react-icons/hi";
 
 const siteroutes = [
   {
@@ -28,11 +36,17 @@ const siteroutes = [
     label: "Watches",
     requiredAuth: true,
   },
+  {
+    href: "/cart",
+    label: <HiShoppingCart size={24} />,
+    requiredAuth: true,
+  },
 ];
 
 const SideNav = () => {
   const pathname = usePathname();
   const { isAuthenticated, user, isLoading } = useKindeBrowserClient();
+
   return (
     <nav>
       <ul className="flex items-center gap-5">
@@ -62,20 +76,24 @@ const SideNav = () => {
             <div className="animate-spin rounded-full h-7  w-7 border-white/50 mx-auto my-2"></div>
           )}
 
-          {user?.picture && (
-            <Image
-              src={user?.picture}
-              alt="profile picture"
-              width={30}
-              height={30}
-              className="rounded-full mx-auto my-2"
-            />
-          )}
+          <div className="cursor-pointer relative">
+            {user?.picture && (
+              <Image
+                src={user?.picture}
+                alt="profile picture"
+                width={30}
+                height={30}
+                className="rounded-full mx-auto my-2"
+              />
+            )}
+          </div>
 
           {user && !user.picture && (
-            <div className="h-7 w-7 rounded-full mx-auto bg-zinc-800 text-xs">
-              {user?.given_name}
-            </div>
+            <>
+              <div className="h-7 w-7 rounded-full mx-auto bg-zinc-800 text-xs cursor-pointer">
+                {user?.given_name}
+              </div>
+            </>
           )}
         </div>
       </ul>

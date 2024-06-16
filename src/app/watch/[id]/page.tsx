@@ -46,6 +46,10 @@ export default async function SingleWatchPage({ params }: SingleWatchProp) {
         <p className="font-semibold ">
           Price: <span className="text-green-400">${watch.price}</span>
         </p>
+
+        <button className="mt-10 px-4 py-2 bg-white text-black text-xs font-semibold rounded-md hover:bg-slate-950 hover:border hover:text-white hover:border-slate-50 duration-300">
+          Add to Cart
+        </button>
       </div>
     </div>
   );
