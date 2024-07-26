@@ -1,22 +1,10 @@
+import { ProductsProp } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface ProductsProps {
-  _id: number;
-  title: string;
-  price: number;
-  previousPrice: number;
-  description: string;
-  category: string;
-  image: string;
-  isNew: boolean;
-  brand: string;
-  quantity: number;
-}
-
 interface Props {
-  phones: ProductsProps[];
+  phones: ProductsProp[];
 }
 
 const ProductsList = ({ phones }: Props) => {

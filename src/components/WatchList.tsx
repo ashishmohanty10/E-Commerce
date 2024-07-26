@@ -1,22 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface WatchListProp {
-  _id: number;
-  title: string;
-  price: number;
-  previousPrice: number;
-  description: string;
-  category: string;
-  image: string;
-  isNew: boolean;
-  brand: string;
-  quantity: number;
-}
+import { ProductsProp } from "@/types/types";
 
 interface Props {
-  watches: WatchListProp[];
+  watches: ProductsProp[];
 }
 
 const WatchList = ({ watches }: Props) => {
